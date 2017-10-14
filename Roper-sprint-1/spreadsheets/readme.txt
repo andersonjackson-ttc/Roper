@@ -1,1 +1,0 @@
-This directory will hold all of our spreadsheets.  Initially, this is only the master schedule.  However, we may use spreadsheets to facilitate the communication between the therapists and the manager.
