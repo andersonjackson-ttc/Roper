@@ -1,3 +1,4 @@
+Attribute VB_Name = "HelperMethods"
 Option Explicit
 
 ' clear contents and highlighting from All Schedules Sheet
@@ -190,7 +191,7 @@ Public Function isGray(value As String) As Boolean
     Set grayOptionsDict = Nothing
 End Function
 ' copy named ranges from one workbook to another
-Sub copyNames()
+Sub CopyNames()
     Dim Source As Workbook
     Dim Target As Workbook
     Dim n As Name
@@ -232,10 +233,7 @@ Public Sub schedCondFormat(evalKey As range, intKey As range, schedRooms As rang
     Dim initialsCell As range
     Dim schedCell As range
     Dim initialsValue As String
-    
-    ' turn off screen updating
-    Application.ScreenUpdating = False
-    
+     
     ' show that EVALs are highlighted in yellow
     With evalKey
         .value = "EVAL"
@@ -308,7 +306,5 @@ Public Sub schedCondFormat(evalKey As range, intKey As range, schedRooms As rang
             End If
         Next schedCell
     Next initialsCell
-
-    ' turn on screen updating
-    Application.ScreenUpdating = True
+    
 End Sub

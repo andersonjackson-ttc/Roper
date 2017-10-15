@@ -1,3 +1,4 @@
+Attribute VB_Name = "IndScheduleMod"
 Option Explicit
 ' create schedule for individual therapist
 Sub createIndSched()
@@ -14,9 +15,6 @@ Sub createIndSched()
   
    ' clear previous data and highlighting
    Call clearIndSched
-   
-   ' turn off screen updating
-   Application.ScreenUpdating = False
 
    ' look at each row in 3W and 8P schedules; if initials match initials in row
    ' copy room and schedule row and paste into all schedules
@@ -73,15 +71,8 @@ Sub createIndSched()
 
     ' turn off cut copy mode
     Application.CutCopyMode = False
-     
-   ' deselect row and go back to initials box
-   Sheets("Ind Schedule").range("IndSchedInitials").Select
+    
    
-   ' turn on screen updating
-   Application.ScreenUpdating = True
-   
-   ' deselect row and go back to initials box
-   Sheets("Ind Schedule").range("IndSchedInitials").Select
-   
+    
 End Sub
 

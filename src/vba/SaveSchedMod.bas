@@ -1,3 +1,6 @@
+Attribute VB_Name = "SaveSchedMod"
+Option Explicit
+
 Sub PasswordProtect()
 '
 ' PasswordProtect Macro
@@ -120,9 +123,4 @@ Private Function GetRange(ASName As String) As String
         Exit Function
     End If
 End Function
-
-
-
-
-
 
