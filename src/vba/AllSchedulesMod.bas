@@ -17,6 +17,7 @@ Public Sub readSchedules()
     Dim str2 As String
     Dim i As Integer
          
+    
     ' create initials arraylist
     Set initialsArray = CreateObject("System.Collections.ArrayList")
     
@@ -141,6 +142,9 @@ Public Sub createSchedules()
     ' declare variables
     Dim timeCreated As range
     
+    ' turn off screen updating
+   Application.ScreenUpdating = False
+    
     ' clear highlighting and previous info
     Call clearAllSched
     ' set box for displaying time schedule was created
@@ -163,5 +167,9 @@ Public Sub createSchedules()
     ActiveWindow.ScrollRow = 1
     ' turn alerts back on
     Application.DisplayAlerts = True
+    ' turn on screen updating
+   Application.ScreenUpdating = True
     
 End Sub
+
+

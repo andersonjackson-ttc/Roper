@@ -19,6 +19,9 @@ Public Sub createDiddies()
     Dim newString As String
     Dim timeCreated As range
 
+    ' turn screen updating off
+    Application.ScreenUpdating = False
+    
     ' clear previous data and highlighting
     Call clearDiddies
     
@@ -106,10 +109,15 @@ Public Sub createDiddies()
     Call lastTimeCreated(timeCreated)
     ' go back to top of sheet
     ActiveWindow.ScrollRow = 1
+    
+    ' turn screen updating on
+    Application.ScreenUpdating = True
     ' turn alerts back on
     Application.DisplayAlerts = True
     
 End Sub
+
+
 
 
 
