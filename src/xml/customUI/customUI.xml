@@ -1,0 +1,35 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+  <ribbon>
+    <tabs>
+
+      <tab id="SchedulingTab" label="Scheduling" insertBeforeMso="TabHome">        		 
+     		<group id="customGroup1" label="Scheduling Tasks">
+			<box   id="box1" boxStyle="vertical">
+				<button id="importRooms" label="Import Rooms/Notes Into All Therapists" size="normal" 
+					onAction="importRooms" imageMso="AccessRefreshAllLists"/>
+				<button id="allSchedules" label="Create All Schedules" size="normal" 
+					onAction="allSchedCallBack" imageMso="AccessRefreshAllLists"  />
+			
+				<button id="allDiddies" label="Create All Diddies" size="normal" 
+					onAction="allDiddiesCallBack" imageMso="AccessRefreshAllLists" />	
+			</box>
+		</group>
+ 		<group id="customGroup2" label="Save Schedules">
+			<box   id="box2" boxStyle="vertical">
+				<button id="save3W" label="Save 3W Schedule As PDF" size="normal" 
+					onAction="save3W" imageMso="BodyTextHide"  />
+			
+				<button id="save8P" label="Save 8P Schedule As PDF" size="normal" 
+					onAction="save8P" imageMso="BodyTextHide" />
+				<button id="save3P" label="Save 3P Schedule As PDF" size="normal" 
+					onAction="save3P" imageMso="BodyTextHide"/>
+			</box>
+		</group>
+
+		
+		
+      </tab>
+
+    </tabs>
+  </ribbon>
+</customUI>
