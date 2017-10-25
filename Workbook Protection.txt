@@ -1,0 +1,46 @@
+In it's current state, the scheduling spreadsheet turn in should have a mixture of protected sheets:
+This is due to the fact that the buttons on the unprotected pages rewrite the cells so that once they are
+protected the vba cannot alter them. Protection isn't necessarily needed on these pages however. Just the pages
+where cell formulas could be altered.
+
+Unprotected:
+-All Diddies
+
+-All Schedules
+-Ind Schedules
+
+Protected:
+-All Therapists
+-3W Schedule
+-8P Schedule
+-3P Schedule
+
+Hidden Rows:
+3W Schedule: 35-78
+8p Schedule: 45-78
+3P Schedule: 29-78
+
+Potected Cells:
+All Schedules:
+Columns: A, B, C, & W
+
+3W Schedule:
+A2:A21
+C2:X21
+C23:X25
+AF2:AF21
+AB26:AF29
+
+8P Schedule:
+A2:A31
+C2:X31
+C33:X35
+AF2:AF31
+AB36:AF39
+
+3P Schedule:
+A2:A15
+C2:X15
+C17:X19
+AF2:AF15
+AB20:AF24
