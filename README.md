@@ -1,5 +1,5 @@
 # Roper
-In it's current state, the scheduling spreadsheet turn in should have a mixture of protected sheets:<br>
+The scheduling spreadsheet turn in should have a mixture of protected sheets:<br>
 This is due to the fact that the buttons on the unprotected pages rewrite the cells so that once they are<br>
 protected the vba cannot alter them.  Protection isn't necessarily needed on these pages however.  Just the pages<br>
 where cell formulas could be altered.<br>
