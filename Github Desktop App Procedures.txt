@@ -1,0 +1,36 @@
+This file tells the steps to downloading a file from a branch to your computer.
+
+Desktop App(64 bit windows only):
+1-You will need to download the app from the website
+  -Make sure you remember where the app is installed, you will need to sign into your github account from the app
+2-Open the github app, click File tab, then clone repository
+3-This will bring up a list of your repositories and the ones you follow, select the proper repository
+  -If you need to add the repository to your account you can click the URL tab and paste the URL for the repository into the slot
+4-You should now be in the repository you want, select the current sprint branch
+  -You can create a new one from the branch tab at the top if necessary
+5-In the bottom right window you should see Open this repository in explorer
+6-This brings up the repository file on your computer, select the file you want to work on and begin working
+7-When saving the file make sure you don't switch locations.  
+  -adding a file to this folder will make github see changes to the repository so don't save unneccesary things here
+8-When you click fetch origin(farthest right button in the button bar) you it will check your local folder against the online
+  repository and list any changes that you make 
+9-When you are done working on a file make sure you press the fetch origin button one more time to ensure all changes are 
+  accounted for
+10-Fill out the commit information in the bottom left window
+11-Ensure you are on the correct branch
+12-Under the commit info area, click the blue button that says 'commit to (current branch)'
+13-The last button on top right that said fetch earlier should now say push
+14-STOP-pushing this pushes your changes to the current branch in the online repository so make sure you are pushing the correct stuff!
+  -At this point, unless you are trying to commit to a branch that needs approval, your changes should be on the branch you want
+
+If you  are committing to master:
+STOP- !!!!!this should only be done at the end of the sprint by 1 person!!!!!
+15-You can now create your pull request, select the branch tab and click 'create pull request'
+16-This opens the pull request screen in the browser
+17-STOP-the base is the branch you are pulling to, the compare is the current one you are working in!
+  -STOP-If someone has already submitted a pull request to the branch you are trying to pull to then you will not have the option of creating
+  a pull request. When the previous pull request is approved your changes will be there as well
+18-Type a name and description for your pull request
+19-Click 'Create Pull Request'
+20-At this point you are finished, approving the pull request is the duty of the repository administrator
+
