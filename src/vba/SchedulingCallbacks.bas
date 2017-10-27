@@ -17,19 +17,25 @@ End Sub
 ' callback for Import Rooms and Notes in scheduling tab
 Public Sub importRooms(control As IRibbonControl)
     Call copyTherapistSheet
+    Call clearPtOtColumns
     Call clearAllTherapistsNotesAndRooms
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
+    Call getTherapistsRoomsAndNotes(Sheets("Rooms"))
+    ' record last row read when sheet was imported
+    Call getLastRow(Sheets("Rooms"), Sheets("All Therapists").range("LastRowCell3W"))
     Call lastTimeCreated(Sheets("All Therapists").range("AllTherapistsTimeCreatedCell"))
     Sheets("All Therapists").Select
 End Sub
 ' callback for Add Rooms and Notes in scheduling tab
 Public Sub addRooms(control As IRibbonControl)
+    Dim str As String
+    Dim lng As Long
+    
+    str = Sheets("All Therapists").range("LastRowCell3W").value
+    lng = CLng(str)
     Call copyTherapistSheet
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
-    Call getTherapistsRoomsAndNotes(Sheets("Rooms3W"))
+    ' update last row read after adding new rooms after copying sheet
+    Call getLastRow(Sheets("Rooms"), Sheets("All Therapists").range("LastRowCell3W"))
+    Call getTherapistsRoomsAndNotes(Sheets("Rooms"), lng)
     Call lastTimeCreated(Sheets("All Therapists").range("AllTherapistsTimeCreatedCell"))
     Sheets("All Therapists").Select
 End Sub

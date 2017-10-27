@@ -429,7 +429,9 @@ Public Function createInitialsDict()
         If Not IsEmpty(initialsCell) And initialsCell.value <> "-" And initialsCell <> " " Then
             initials = UCase(Trim(initialsCell.value))
             initialsAddress = initialsCell.address
-            initialsDict.Add Key:=initials, Item:=initialsAddress
+            If Not initialsDict.Exists(initials) Then
+                initialsDict.Add Key:=initials, Item:=initialsAddress
+            End If
         End If
     Next initialsCell
     
@@ -455,19 +457,25 @@ Public Function createRoomsDict()
     For Each roomCell1 In Sheets("3W Schedule").range("Rooms3WSchedule")
         roomNum = roomCell1.value
         wing = "3W"
-        roomsDict.Add Key:=roomNum, Item:=wing
+        If Not roomsDict.Exists(roomNum) Then
+            roomsDict.Add Key:=roomNum, Item:=wing
+        End If
     Next roomCell1
     
     For Each roomCell2 In Sheets("8P Schedule").range("Rooms8PSchedule")
         roomNum = UCase(roomCell2.value)
         wing = "8P"
-        roomsDict.Add Key:=roomNum, Item:=wing
+        If Not roomsDict.Exists(roomNum) Then
+            roomsDict.Add Key:=roomNum, Item:=wing
+        End If
     Next roomCell2
     
     For Each roomCell3 In Sheets("3P Schedule").range("Rooms3PSchedule")
         roomNum = UCase(roomCell3.value)
         wing = "3P"
-        roomsDict.Add Key:=roomNum, Item:=wing
+        If Not roomsDict.Exists(roomNum) Then
+            roomsDict.Add Key:=roomNum, Item:=wing
+        End If
     Next roomCell3
     
     Set createRoomsDict = roomsDict
@@ -484,3 +492,40 @@ Public Sub populateAllTherapists()
     Call getTherapistsRooms(Sheets("TherRooms3P"))
     Call lastTimeCreated(Sheets("All Therapists").range("AllTherapistsTimeCreatedCell"))
 End Sub
+
+' clears PT and OT columns in each schedule
+Public Sub clearPtOtColumns()
+Dim cell As range
+Dim cell2 As range
+Dim cell3 As range
+
+For Each cell In Sheets("3W Schedule").range("PTOTColumns3W")
+    cell.value = ""
+Next cell
+
+For Each cell2 In Sheets("8P Schedule").range("PTOTColumns8P")
+    cell2.value = ""
+Next cell2
+
+For Each cell3 In Sheets("3P Schedule").range("PTOTColumns3P")
+    cell3.value = ""
+Next cell3
+
+End Sub
+
+Public Sub getLastRow(sheet As Worksheet, printCell As range)
+    Dim lastRow As Long
+    
+    lastRow = sheet.Cells.Find("*", searchorder:=xlByRows, searchdirection:=xlPrevious).Row
+    ' print last row number in cell
+    printCell.value = lastRow
+End Sub
+
+' changes value of last row cell to 0 so that addRooms will work if
+' therapist form is cleared
+Public Sub changeLastRow()
+    Sheets("All Therapists").Unprotect Password:="Roper"
+    Sheets("All Therapists").range("LastRowCell3W").value = 0
+    Sheets("All Therapists").Protect Password:="Roper"
+End Sub
+
