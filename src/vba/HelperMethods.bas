@@ -388,6 +388,9 @@ Public Sub clearAllTherapistsNotesAndRooms()
     Dim cell As range
     Dim cell2 As range
     
+    Application.ScreenUpdating = False
+    
+    
     Set allRooms = Sheets("All Therapists").range("AllTherapistsAllRooms")
     Set allNotes = Sheets("All Therapists").range("AllTherapistsAllNotes")
     ' clear highlighting and contents from all therapists room cells
@@ -407,6 +410,9 @@ Public Sub clearAllTherapistsNotesAndRooms()
             cell2.MergeArea.ClearContents
         End If
     Next cell2
+    
+     Application.ScreenUpdating = True
+    
 End Sub
 
 ' Used to find the name of a worksheet; accepts the name as a string.
@@ -497,7 +503,6 @@ End Sub
 
 Public Sub getLastRow(sheet As Worksheet, printCell As range)
     Dim lastRow As Long
-    
     lastRow = sheet.Cells.Find("*", searchorder:=xlByRows, searchdirection:=xlPrevious).Row
     ' print last row number in cell
     printCell.value = lastRow
