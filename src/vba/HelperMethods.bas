@@ -388,6 +388,9 @@ Public Sub clearAllTherapistsNotesAndRooms()
     Dim cell As range
     Dim cell2 As range
     
+    Application.ScreenUpdating = False
+    
+    
     Set allRooms = Sheets("All Therapists").range("AllTherapistsAllRooms")
     Set allNotes = Sheets("All Therapists").range("AllTherapistsAllNotes")
     ' clear highlighting and contents from all therapists room cells
@@ -407,6 +410,9 @@ Public Sub clearAllTherapistsNotesAndRooms()
             cell2.MergeArea.ClearContents
         End If
     Next cell2
+    
+     Application.ScreenUpdating = True
+    
 End Sub
 
 ' Used to find the name of a worksheet; accepts the name as a string.
@@ -428,7 +434,7 @@ Public Function createInitialsDict()
     For Each initialsCell In Sheets("All Therapists").range("AllTherapistsInitials")
         If Not IsEmpty(initialsCell) And initialsCell.value <> "-" And initialsCell <> " " Then
             initials = UCase(Trim(initialsCell.value))
-            initialsAddress = initialsCell.address
+            initialsAddress = initialsCell.Address
             If Not initialsDict.Exists(initials) Then
                 initialsDict.Add Key:=initials, Item:=initialsAddress
             End If
@@ -493,29 +499,10 @@ Public Sub populateAllTherapists()
     Call lastTimeCreated(Sheets("All Therapists").range("AllTherapistsTimeCreatedCell"))
 End Sub
 
-' clears PT and OT columns in each schedule
-Public Sub clearPtOtColumns()
-Dim cell As range
-Dim cell2 As range
-Dim cell3 As range
 
-For Each cell In Sheets("3W Schedule").range("PTOTColumns3W")
-    cell.value = ""
-Next cell
-
-For Each cell2 In Sheets("8P Schedule").range("PTOTColumns8P")
-    cell2.value = ""
-Next cell2
-
-For Each cell3 In Sheets("3P Schedule").range("PTOTColumns3P")
-    cell3.value = ""
-Next cell3
-
-End Sub
 
 Public Sub getLastRow(sheet As Worksheet, printCell As range)
     Dim lastRow As Long
-    
     lastRow = sheet.Cells.Find("*", searchorder:=xlByRows, searchdirection:=xlPrevious).Row
     ' print last row number in cell
     printCell.value = lastRow
@@ -528,4 +515,5 @@ Public Sub changeLastRow()
     Sheets("All Therapists").range("LastRowCell3W").value = 0
     Sheets("All Therapists").Protect Password:="Roper"
 End Sub
+
 

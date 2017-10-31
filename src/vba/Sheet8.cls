@@ -15,7 +15,7 @@ Private Sub Worksheet_Change(ByVal Target As Excel.range)
     Dim cell As range
     
     Set vRange = Sheets("Ind Schedule").range("IndSchedInitials")
-    If Union(Target, vRange).address = vRange.address Then
+    If Union(Target, vRange).Address = vRange.Address Then
         Call createIndSched
     End If
    

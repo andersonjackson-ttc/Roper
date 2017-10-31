@@ -116,24 +116,54 @@ End Sub
 ' Copies the Therapist Sheet from the TherapistForm.xlsm Workbook to the SchedulingWorkbook.
 ' If the sheet already exists, it is deleted and replaced with a new version. The copy is placed AFTER the Ind Schedule sheet.
 
-Public Sub copyTherapistSheet()
+Public Sub copyTherapistSheet(filePath As String, sheetName As String, workbookName As String)
 
-Dim fName As String
 Dim targetWorkbook As Workbook
 
 ' set filename that contains sheet to copy and targetWorkbook (which may also have
 ' to be changed to a string and set to a file path)
-fName = "C:\Users\a\Desktop\Roper-6\spreadsheets\Rooms_Form2.0.xlsm"
+
+Dim Path As String
+Path = filePath
+
+Dim sName As String
+sName = sheetName
+
+Dim wName As String
+wName = workbookName
+
 Set targetWorkbook = Workbooks("SchedulingWorkbook.xlsm")
 
-If Not GetWorksheet("Rooms") Is Nothing Then
+If Not GetWorksheet(sName) Is Nothing Then
     Application.DisplayAlerts = False
-    Worksheets("Rooms").Delete
+    Worksheets(sName).Delete
     Application.DisplayAlerts = True
 End If
 
-Workbooks.Open Filename:=fName
-Sheets("Rooms").Copy After:=targetWorkbook.Sheets("Ind Schedule")
-Workbooks("Rooms_Form2.0.xlsm").Close savechanges:=False
+Workbooks.Open Filename:=Path
+Sheets(sheetName).Copy After:=targetWorkbook.Sheets("Ind Schedule")
+Sheets(sheetName).Name = sName
+Workbooks(wName).Close savechanges:=False
+
+ActiveWorkbook.Sheets(sName).Visible = False
 
 End Sub
+
+Public Sub copy3PSheet()
+    
+    Call copyTherapistSheet(Worksheets("File Paths").Cells(2, "B").value, "3PFormSheet", Worksheets("File Paths").Cells(2, "C").value)
+    
+End Sub
+
+Public Sub copy3WSheet()
+
+    Call copyTherapistSheet(Worksheets("File Paths").Cells(4, "B").value, "3WFormSheet", Worksheets("File Paths").Cells(4, "C").value)
+    
+End Sub
+
+Public Sub copy8PSheet()
+
+    Call copyTherapistSheet(Worksheets("File Paths").Cells(3, "B").value, "8PFormSheet", Worksheets("File Paths").Cells(3, "C").value)
+
+End Sub
+

@@ -1,8 +1,0 @@
-To Add CustomUI xml file:
-
--- rename spreadsheet to SchedulingWorkbook.xlsm.zip
--- open it to see file structure
--- remove _rels folder and replace it with the _rels folder in this directory
--- add CustomUI folder
--- close and rename
--- add all macros and test

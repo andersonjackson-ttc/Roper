@@ -20,5 +20,3 @@ Private Sub Workbook_Open()
     Application.OnTime TimeValue("18:30:00"), "changeLastRow"
 
 End Sub
-
-
