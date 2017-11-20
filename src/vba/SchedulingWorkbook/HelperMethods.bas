@@ -538,5 +538,31 @@ Public Sub changeLastRow()
     Sheets("All Therapists").range("LastRowCell3W").value = 0
     Sheets("All Therapists").Protect Password:="Roper"
 End Sub
-
+'used in schedule sheets to total hours for PT/OT
+Public Function SumHours(SearchRow As range, InputInitials As range, placeholder As String)
+    Dim total As Double
+    Dim cel As range
+    Dim cell As range
+    Dim compareValue As String
+    total = 0
+    For Each cel In SearchRow
+        compareValue = cel.value
+        For Each cell In InputInitials
+            If InStr(cel.value, placeholder) Then
+                total = total + 0.5
+                Exit For
+            End If
+            If InStr(cel.value, "GRP ") Then
+                compareValue = Replace(compareValue, "GRP ", "")
+            End If
+            If InStr(cel.value, "ADL ") Then
+                compareValue = Replace(compareValue, "ADL ", "")
+            End If
+            If compareValue = cell.value Then
+                total = total + 0.5
+            End If
+        Next cell
+    Next cel
+    SumHours = total
+End Function
 
